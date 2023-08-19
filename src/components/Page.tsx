@@ -1,4 +1,3 @@
-import React from "react";
 import { Component1 } from "./PageComponents/Component1";
 import "./page.css";
 import { Component2 } from "./PageComponents/Component2";

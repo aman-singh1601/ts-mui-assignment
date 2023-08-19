@@ -1,17 +1,37 @@
 import React, { useState } from "react";
-import { Input, Typography, Container, Button } from "@mui/material";
+import {
+  Input,
+  Typography,
+  Snackbar,
+  Container,
+  Button,
+  Alert,
+} from "@mui/material";
 import "./home.css";
+
 interface formProps {
   name: string;
   email: string;
   number: string;
 }
-export const Home = () => {
+export const Home = ({ message }: { message: boolean }) => {
+  const [open, setOpen] = useState(true);
   const [formDetails, setFormDetails] = useState<formProps>({
     name: "",
     email: "",
     number: "",
   });
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const submit = () => {
     console.log(formDetails);
     localStorage.setItem("profile", JSON.stringify(formDetails));
@@ -19,7 +39,17 @@ export const Home = () => {
   };
   return (
     <>
-      {/* <CssBaseline /> */}
+      {message && (
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity="warning"
+            sx={{ width: "100%" }}
+          >
+            Please enter user details!
+          </Alert>
+        </Snackbar>
+      )}
       <div className="home">
         <Container maxWidth="sm" className="form">
           <div className="insideHome">

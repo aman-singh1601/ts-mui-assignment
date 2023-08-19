@@ -1,0 +1,18 @@
+.home{
+   height: 100%;
+   width: 100vw;
+   justify-content: center;
+   display: flex;
+}
+.insideHome{
+    margin-bottom: 15px;
+}
+.content{
+    width: 200px;
+}
+.form{
+    width: fit-content !important;
+    margin-right: 2px !important;
+    margin-left: 2px !important;
+    border-left: 1px solid rgb(27, 11, 11);
+}

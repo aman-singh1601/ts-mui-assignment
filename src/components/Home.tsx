@@ -26,6 +26,7 @@ export const Home = ({ message }: { message: boolean }) => {
     event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
+    event?.preventDefault();
     if (reason === "clickaway") {
       return;
     }
@@ -40,7 +41,11 @@ export const Home = ({ message }: { message: boolean }) => {
   return (
     <>
       {message && (
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={(event) => handleClose(event)}
+        >
           <Alert
             onClose={handleClose}
             severity="warning"

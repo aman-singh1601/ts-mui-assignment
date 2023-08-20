@@ -15,6 +15,7 @@ interface formProps {
   number: string;
 }
 export const Home = ({ message }: { message: boolean }) => {
+  const [fillDetails, setFillDetails] = useState(false);
   const [open, setOpen] = useState(true);
   const [formDetails, setFormDetails] = useState<formProps>({
     name: "",
@@ -34,13 +35,22 @@ export const Home = ({ message }: { message: boolean }) => {
     setOpen(false);
   };
   const submit = () => {
-    console.log(formDetails);
-    localStorage.setItem("profile", JSON.stringify(formDetails));
-    window.location.assign("/page");
+    if (
+      formDetails.name === "" ||
+      formDetails.number === "" ||
+      formDetails.email === ""
+    ) {
+      setFillDetails(true);
+      return;
+    } else {
+      setFillDetails(false);
+      localStorage.setItem("profile", JSON.stringify(formDetails));
+      window.location.assign("/page");
+    }
   };
   return (
     <>
-      {message && (
+      {(message || fillDetails) && (
         <Snackbar
           open={open}
           autoHideDuration={6000}

@@ -62,6 +62,7 @@ export const Home = ({ message }: { message: boolean }) => {
             <Input
               type="text"
               name="name"
+              required
               value={formDetails.name}
               onChange={(e) =>
                 setFormDetails({
@@ -76,6 +77,7 @@ export const Home = ({ message }: { message: boolean }) => {
             <Input
               type="number"
               name="number"
+              required
               value={formDetails.number}
               onChange={(e) =>
                 setFormDetails({
@@ -91,6 +93,7 @@ export const Home = ({ message }: { message: boolean }) => {
               type="email"
               name="email"
               value={formDetails.email}
+              required
               onChange={(e) =>
                 setFormDetails({
                   ...formDetails,
